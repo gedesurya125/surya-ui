@@ -12,10 +12,10 @@ export const genereateThemeBreakpoints = (
 // the actiual breakpoints we use in design
 // and it also use to generate responsiive rem values
 export const allBreakpoints: string[] = [
-  '(min-width: 0px) and (max-width: 374px)',
+  '(max-width: 374px)',
   '(min-width: 375px) and (max-width: 639px)',
-  '(min-width: 640px) and (max-width: 833px)',
-  '(min-width: 834px) and (max-width: 1193px) and (orientation: portrait)',
+  '(min-width: 640px) and (max-width: 811px)',
+  '(min-width: 812px) and (max-width: 1193px) and (orientation: portrait)',
   '(min-width: 812px) and (max-width: 1193px) and (orientation: landscape)',
   '(min-width: 1194px) and (max-width: 1439px)',
   '(min-width: 1440px)',

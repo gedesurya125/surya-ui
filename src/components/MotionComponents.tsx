@@ -1,7 +1,6 @@
 import {
   Box as ThemeUiBox,
   Flex as ThemeUiFlex,
-  Grid as ThemeUiGrid,
   Button as ThemeUiButton,
   Text as ThemeUiText,
   Heading as ThemeUiHeading,
@@ -38,7 +37,6 @@ import { motion } from 'framer-motion';
 
 export const Box = motion(ThemeUiBox);
 export const Flex = motion(ThemeUiFlex);
-export const Grid = motion(ThemeUiGrid);
 export const Button = motion(ThemeUiButton);
 export const Text = motion(ThemeUiText);
 export const Heading = motion(ThemeUiHeading);

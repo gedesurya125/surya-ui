@@ -6,7 +6,7 @@ export const genereateMediaQuery = (breakpoint: number | string) => {
 };
 
 // getting first number group of a string
-export const getNumberFromString = (
+export const getFirstNumberFromString = (
   stringContainNumber: string
 ): number | null => {
   const getNumRegex = /\d+/gi;
@@ -14,21 +14,40 @@ export const getNumberFromString = (
   return numberArray && Number(numberArray[0]);
 };
 
-export const getScreenWidth = (breakpoint: number | string) => {
-  if (typeof breakpoint !== 'number') return getNumberFromString(breakpoint);
+export const getScreenSizeFromBreakpoint = (breakpoint: number | string) => {
+  if (typeof breakpoint !== 'number')
+    return getFirstNumberFromString(breakpoint);
   return breakpoint;
 };
 
+const getCurrentScreenSize = () => window.innerWidth;
+
+const selectMatchesBreakpoint = (currentScreenWidth: number) => {
+  const breakPointMinWidth = allBreakpoints?.map(
+    (breakpoint) => getScreenSizeFromBreakpoint(breakpoint) || []
+  );
+  const breakPointMatches = breakPointMinWidth.reverse().find((breakpoint) => {
+    return currentScreenWidth >= breakpoint;
+  });
+  return breakPointMatches || breakPointMinWidth[0]; // if breakPointMatches is undefined (not fount any matches) return the first break pioints
+};
+
 export const useResponsiveRem = () => {
-  const GROW_RATIO = 0.1;
+  // run correct initial responsive rem setup when page first load
+  const breakpointMatchesOnPageLoad = selectMatchesBreakpoint(
+    getCurrentScreenSize()
+  );
+  document.documentElement.style.fontSize = `calc(10 / ${breakpointMatchesOnPageLoad} * (100vw - ${breakpointMatchesOnPageLoad}px) + 10px)`;
+
+  // Listen for breakpoint changes
   allBreakpoints.forEach((breakpoint) => {
     const mediaQuery = window.matchMedia(genereateMediaQuery(breakpoint));
     mediaQuery.addEventListener('change', (e) => {
       if (e.matches) {
-        console.log('current breakpoints is', breakpoint);
-        document.documentElement.style.fontSize = `calc(${GROW_RATIO} * (100vw - ${getScreenWidth(
+        console.log('this is current media query applied', breakpoint);
+        document.documentElement.style.fontSize = `calc(10 / ${getScreenSizeFromBreakpoint(
           breakpoint
-        )}px) + 10px)`;
+        )} * (100vw - ${getScreenSizeFromBreakpoint(breakpoint)}px) + 10px)`;
       }
     });
   });
