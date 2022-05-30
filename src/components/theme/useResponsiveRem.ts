@@ -36,7 +36,7 @@ const selectMatchesBreakpoint = (currentScreenWidth: number) => {
 };
 
 const getResponsiveSize = (breakpointsScreenSize: number | never[]) =>
-  `calc(9 / ${breakpointsScreenSize} * (100vw - ${breakpointsScreenSize}px) + 10px)`;
+  `calc(8.5 / ${breakpointsScreenSize} * (100vw - ${breakpointsScreenSize}px) + 10px)`;
 
 export const useResponsiveRem = () => {
   // run correct initial responsive rem setup when page first load
