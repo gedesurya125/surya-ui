@@ -1,19 +1,10 @@
 import React, { FC } from 'react';
+import { COLUMN_GAP, COLUMN_AMMOUNT, CONTAINER_WIDTH } from './theme';
 
 // External Components
 import { Container, ContainerProps } from 'theme-ui';
 
-// Types import
-// import type { BoxProps } from 'theme-ui';
-
 export interface GridProps extends ContainerProps {}
-
-// CONSTANTS
-const COLUMN_GAP = [0.7, 0.7, 0.7, 0.7, 0.7, 0.8];
-
-const COLUMN_AMMOUNT = [12, 12, 24, 24, 24, 24];
-
-const CONTAINER_WIDTH = [32, 54, 72, 72, 106, 126]; // in rem
 
 const columnWidths = CONTAINER_WIDTH.map(
   (conWidth, index) => conWidth / COLUMN_AMMOUNT[index] - COLUMN_GAP[index]

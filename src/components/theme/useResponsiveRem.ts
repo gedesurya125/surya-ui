@@ -52,7 +52,6 @@ export const useResponsiveRem = () => {
     const mediaQuery = window.matchMedia(genereateMediaQuery(breakpoint));
     mediaQuery.addEventListener('change', (e) => {
       if (e.matches) {
-        console.log('this is current media query applied', breakpoint);
         document.documentElement.style.fontSize = getResponsiveSize(
           getScreenSizeFromBreakpoint(breakpoint)
         );
