@@ -25,21 +25,18 @@ export const Overlay: FC<OverlayProps> = ({
   }
 
   return ReactDOM.createPortal(
-    <OverlayBackground
+    <OverlayContainer
       handleCloseOverlay={handleCloseOverlay}
       sx={sx}
       {...props}
     >
       {children}
-    </OverlayBackground>,
+    </OverlayContainer>,
     portalRoot
   );
 };
 
-interface OverlayBackgroundProps extends BoxProps {
-  handleCloseOverlay: () => void;
-}
-const OverlayBackground: FC<OverlayBackgroundProps> = ({
+const OverlayContainer: FC<OverlayProps> = ({
   children,
   handleCloseOverlay,
   sx,
