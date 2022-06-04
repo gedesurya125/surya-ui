@@ -50,9 +50,10 @@ export interface GridTemplateProps extends ContainerProps {
 export const GridTemplate = React.forwardRef<HTMLDivElement, GridTemplateProps>(
   ({ children, variant = 'outside.templateColumns', sx, ...props }, ref) => {
     const [placement, behavior] = variant?.split('.');
+    console.log('this is behavior', behavior);
 
     const gridPlacementStyle = {
-      mr: placement === 'inside' ? 0 : 'auto',
+      mx: placement === 'inside' ? 0 : 'auto',
     };
     const gridBehaviorStyle =
       behavior === 'autoColumns'

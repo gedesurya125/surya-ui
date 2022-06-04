@@ -31,29 +31,78 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<GridTemplateProps> = (args) => (
-  <ThemeProvider theme={theme}>
-    <GridTemplate {...args}>
-      {/* <SampleChildren {...args.sampleChildrenProps} /> */}
-      <Box
-        sx={{
-          gridColumn: [
-            '1 / span 12',
-            '1 / span 12',
-            '1 / span 24',
-            '1 / span 24',
-            '1 / span 24',
-            '1 / span 24',
-          ],
-          bg: 'blue',
-          height: '30rem',
-        }}
-      />
-    </GridTemplate>
-  </ThemeProvider>
-);
+interface TestingProps extends GridTemplateProps {
+  variant:
+    | 'inside.autoColumns'
+    | 'outside.autoColumns'
+    | 'inside.templateColumns'
+    | 'outside.templateColumns';
+  gridColumnStart: string[] | string | number[] | number;
+  gridColumnEnd: string[] | string | number[] | number;
+  bg: string;
+  height: string | number;
+}
+
+/**
+ * Template 1
+ */
+const Template: Story<TestingProps> = (args) => {
+  const { variant, bg, height, gridColumnStart, gridColumnEnd } = args;
+  return (
+    <ThemeProvider theme={theme}>
+      <GridTemplate variant={variant}>
+        <Box
+          sx={{
+            gridColumnStart,
+            gridColumnEnd,
+            bg,
+            height,
+          }}
+        />
+      </GridTemplate>
+    </ThemeProvider>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'outside.autoColumns',
+  variant: 'outside.templateColumns',
+  gridColumnStart: 1,
+  gridColumnEnd: 13,
+  bg: 'blue',
+  height: '30rem',
+};
+
+/**
+ * Template 2
+ */
+
+const Template2: Story<TestingProps> = (args) => {
+  const { variant, bg, height, gridColumnStart, gridColumnEnd } = args;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GridTemplate>
+        <GridTemplate variant={variant}>
+          <Box
+            sx={{
+              gridColumnStart,
+              gridColumnEnd,
+              bg,
+              height,
+            }}
+          />
+        </GridTemplate>
+      </GridTemplate>
+    </ThemeProvider>
+  );
+};
+
+export const NestedGridTemplate = Template2.bind({});
+NestedGridTemplate.args = {
+  variant: 'inside.autoColumns',
+  gridColumnStart: 1,
+  gridColumnEnd: 'span 4',
+  bg: 'blue',
+  height: '30rem',
 };
