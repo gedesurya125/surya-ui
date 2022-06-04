@@ -32,9 +32,11 @@ import {
   Message as ThemeUiMessage,
   IconButton as ThemeUiIconButton,
   MenuButton as ThemeUiMenuButton,
+  Grid as ThemeUiGrid,
 } from 'theme-ui';
 import { motion } from 'framer-motion';
 
+export const Grid = motion(ThemeUiGrid);
 export const Box = motion(ThemeUiBox);
 export const Flex = motion(ThemeUiFlex);
 export const Button = motion(ThemeUiButton);
