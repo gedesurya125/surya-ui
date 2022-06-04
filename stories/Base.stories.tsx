@@ -1,6 +1,9 @@
 import React, { FC } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Base, ThemeProviderProps } from '../src/components/Base';
+import {
+  ThemeProvider,
+  ThemeProviderProps,
+} from '../src/components/ThemeProvider';
 import type { BoxProps, SxProp } from 'theme-ui';
 
 // Extrnal Components
@@ -11,8 +14,8 @@ import { Grid } from '../src/components/Grid';
 
 // Meta
 const baseMeta: Meta = {
-  title: 'component/Base',
-  component: Base,
+  title: 'component/ThemeProvider',
+  component: ThemeProvider,
   parameters: {
     layout: 'fullscreen',
   },
@@ -41,21 +44,21 @@ const SampleChildren: FC<SampleChildrenProps> = ({
 
 // Template 1
 const Template: Story<ThemeProviderProps> = (args) => (
-  <Base {...args}>
+  <ThemeProvider {...args}>
     <SampleChildren />
-  </Base>
+  </ThemeProvider>
 );
 
 // Default Test for template 1
-export const BaseDefault = Template.bind({});
-BaseDefault.args = {};
+export const ThemeProviderDefault = Template.bind({});
+ThemeProviderDefault.args = {};
 
 interface ThemeProvider2Props extends ThemeProviderProps {
   sx?: SxProp['sx'];
 }
 // Template 2
 const GridChildrenTemplates: Story<ThemeProvider2Props> = (args) => (
-  <Base {...args}>
+  <ThemeProvider {...args}>
     <Grid>
       <SampleChildren
         sx={{
@@ -63,11 +66,11 @@ const GridChildrenTemplates: Story<ThemeProvider2Props> = (args) => (
         }}
       />
     </Grid>
-  </Base>
+  </ThemeProvider>
 );
 // Test for template 2
-export const BaseDefault2 = GridChildrenTemplates.bind({});
-BaseDefault2.args = {
+export const ThemeProviderDefault2 = GridChildrenTemplates.bind({});
+ThemeProviderDefault2.args = {
   sx: {
     gridColumn: '1/13',
     width: '100%',
