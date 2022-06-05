@@ -74,10 +74,10 @@ export const GridTemplate = React.forwardRef<HTMLDivElement, GridTemplateProps>(
       <Box
         ref={ref}
         sx={{
+          ...sx,
           display: 'grid',
           ...gridPlacementStyle,
           ...gridBehaviorStyle,
-          ...sx,
         }}
         {...props}
       >
