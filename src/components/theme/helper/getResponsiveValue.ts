@@ -1,4 +1,4 @@
-import { GROW_RATIO, NORMALIZED_REM_VALUE } from '../constant';
+import { GROW_RATIO, NORMALIZED_REM_VALUE } from '../../constants/constant';
 
 /**
  * Get the first number group from a sting
@@ -33,3 +33,6 @@ export const getScreenSizeFromBreakpoint = (
  */
 export const getResponsiveSize = (breakpointsScreenSize: number) =>
   `calc(${GROW_RATIO} / ${breakpointsScreenSize} * (100vw - ${breakpointsScreenSize}px) + ${NORMALIZED_REM_VALUE}px)`;
+
+export const getGridTemplateMarginNormalizer = (contaienrWidth: number) =>
+  `calc((100vw - ${contaienrWidth}rem) * -0.5)`;

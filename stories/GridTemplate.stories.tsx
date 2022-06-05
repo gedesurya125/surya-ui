@@ -9,6 +9,7 @@ import { Box } from 'theme-ui';
 // Tested components
 import { GridTemplate } from '../src/components/GridTemplate';
 import type { GridTemplateProps } from '../src/components/GridTemplate';
+import { gridTemplateMarginNormalizers } from '../src/components/theme/utils/gridTemplateMarginNormalizers';
 
 const meta: Meta = {
   title: 'component/GridTemplate',
@@ -26,6 +27,10 @@ const meta: Meta = {
         'outside.templateColumns',
       ],
     },
+    minusMargin: {
+      control: 'select',
+      options: ['none', 0, 1, 2, 3, 4, 5],
+    },
   },
 };
 
@@ -41,13 +46,16 @@ interface TestingProps extends GridTemplateProps {
   gridColumnEnd: string[] | string | number[] | number;
   bg: string;
   height: string | number;
+  minusMargin: string | number;
 }
 
 /**
  * Template 1
  */
 const Template: Story<TestingProps> = (args) => {
-  const { variant, bg, height, gridColumnStart, gridColumnEnd } = args;
+  const { variant, bg, height, gridColumnStart, gridColumnEnd, minusMargin } =
+    args;
+  console.log('this is page template', gridTemplateMarginNormalizers);
   return (
     <ThemeProvider theme={theme}>
       <GridTemplate variant={variant}>
@@ -57,6 +65,10 @@ const Template: Story<TestingProps> = (args) => {
             gridColumnEnd,
             bg,
             height,
+            mx:
+              minusMargin === 'none'
+                ? 0
+                : gridTemplateMarginNormalizers[minusMargin],
           }}
         />
       </GridTemplate>
@@ -71,6 +83,7 @@ Default.args = {
   gridColumnEnd: 13,
   bg: 'blue',
   height: '30rem',
+  minusMargin: 'none',
 };
 
 /**
@@ -80,6 +93,7 @@ Default.args = {
 const Template2: Story<TestingProps> = (args) => {
   const { variant, bg, height, gridColumnStart, gridColumnEnd } = args;
 
+  console.log('current variant is', variant);
   return (
     <ThemeProvider theme={theme}>
       <GridTemplate>

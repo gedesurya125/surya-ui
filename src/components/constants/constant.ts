@@ -1,4 +1,6 @@
-// CONSTANTS
+/****************************************
+ * This is a Constants configuration file
+ ****************************************/
 export const COLUMN_GAP = [0.3, 0.4, 0.4, 0.4, 0.5, 0.6];
 
 export const COLUMN_AMMOUNT = [12, 12, 24, 24, 24, 24];

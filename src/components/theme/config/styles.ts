@@ -1,4 +1,4 @@
-import { BREAK_POINTS } from '../constant';
+import { BREAK_POINTS } from '../../constants/constant';
 import {
   getResponsiveSize,
   getScreenSizeFromBreakpoint,
