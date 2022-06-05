@@ -1,9 +1,9 @@
 import React from 'react';
 import { COLUMN_GAP, COLUMN_AMMOUNT, CONTAINER_WIDTH } from './theme';
-import { useThemeUI } from 'theme-ui';
 
 // External Components
-import { Box, ContainerProps } from 'theme-ui';
+import { Box } from 'theme-ui';
+import type { BoxProps } from 'theme-ui';
 
 /**
  * get column width for each breakpoints
@@ -40,7 +40,7 @@ const columnGap = COLUMN_GAP.map((gap) => gap + 'rem');
 /**
  * Main Components
  */
-export interface GridTemplateProps extends ContainerProps {
+export interface GridTemplateProps extends BoxProps {
   variant?:
     | 'inside.autoColumns'
     | 'outside.autoColumns'
@@ -50,11 +50,7 @@ export interface GridTemplateProps extends ContainerProps {
 
 export const GridTemplate = React.forwardRef<HTMLDivElement, GridTemplateProps>(
   ({ children, variant = 'outside.templateColumns', sx, ...props }, ref) => {
-    const { theme } = useThemeUI();
-    console.log('this is theme context', theme);
-
     const [placement, behavior] = variant?.split('.');
-    console.log('this is behavior', behavior);
 
     const gridPlacementStyle = {
       mx: placement === 'inside' ? 0 : 'auto',
