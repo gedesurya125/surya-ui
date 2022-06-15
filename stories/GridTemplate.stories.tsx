@@ -3,13 +3,13 @@ import { Meta, Story } from '@storybook/react';
 
 // Depedency components
 import { ThemeProvider } from '../src/components/ThemeProvider';
+import { ThemeConfigContext } from '../src/components/context/themeConfigContext';
 import { theme } from '../src/components/theme/theme';
 import { Box } from 'theme-ui';
 
 // Tested components
 import { GridTemplate } from '../src/components/GridTemplate';
 import type { GridTemplateProps } from '../src/components/GridTemplate';
-import { gridTemplateMarginNormalizers } from '../src/components/theme/utils/gridTemplateMarginNormalizers';
 
 const meta: Meta = {
   title: 'component/GridTemplate',
@@ -55,21 +55,17 @@ interface TestingProps extends GridTemplateProps {
 const Template: Story<TestingProps> = (args) => {
   const { variant, bg, height, gridColumnStart, gridColumnEnd, minusMargin } =
     args;
-  console.log('this is page template', gridTemplateMarginNormalizers);
   return (
     <ThemeProvider theme={theme}>
       <GridTemplate variant={variant}>
-        <Box
+        <SampleBox
           sx={{
-            gridColumnStart,
-            gridColumnEnd,
             bg,
             height,
-            mx:
-              minusMargin === 'none'
-                ? 0
-                : gridTemplateMarginNormalizers[minusMargin],
+            gridColumnStart,
+            gridColumnEnd,
           }}
+          minusMargin={minusMargin}
         />
       </GridTemplate>
     </ThemeProvider>
@@ -84,6 +80,22 @@ Default.args = {
   bg: 'blue',
   height: '30rem',
   minusMargin: 'none',
+};
+
+// Elements
+const SampleBox = ({ minusMargin, sx }) => {
+  // const ThemeConfig = React.useContext(ThemeConfigContext);
+  return (
+    <Box
+      sx={{
+        // mx:
+        //   minusMargin === 'none'
+        //     ? 0
+        //     : ThemeConfig.getGridTemplateMarginNormalizers()[minusMargin],
+        ...sx,
+      }}
+    />
+  );
 };
 
 /**

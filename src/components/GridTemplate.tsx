@@ -1,41 +1,9 @@
 import React from 'react';
-import { COLUMN_GAP, COLUMN_AMMOUNT, CONTAINER_WIDTH } from './theme';
+import { ThemeConfigContext } from './context/themeConfigContext';
 
 // External Components
 import { Box } from 'theme-ui';
 import type { BoxProps } from 'theme-ui';
-
-/**
- * get column width for each breakpoints
- */
-const columnWidths = CONTAINER_WIDTH.map(
-  (conWidth, index) =>
-    (conWidth - (COLUMN_AMMOUNT[index] - 1) * COLUMN_GAP[index]) /
-      COLUMN_AMMOUNT[index] +
-    'rem'
-);
-
-/**
- * get grid template columns css value for each breakpoints
- */
-const gridTemplateColumns = COLUMN_AMMOUNT.map(
-  (colAmmount) => `repeat(${colAmmount}, 1fr)`
-);
-
-/**
- * get the container width for each breakpoint times and set the units as rem
- */
-const width = CONTAINER_WIDTH.map((conWidth) => conWidth + 'rem');
-
-/**
- * grid column width for auto column styles
- */
-const gridAutoColumns = columnWidths;
-
-/**
- * grid column gap for auto column styles
- */
-const columnGap = COLUMN_GAP.map((gap) => gap + 'rem');
 
 /**
  * Main Components
@@ -50,21 +18,22 @@ export interface GridTemplateProps extends BoxProps {
 
 export const GridTemplate = React.forwardRef<HTMLDivElement, GridTemplateProps>(
   ({ children, variant = 'outside.templateColumns', sx, ...props }, ref) => {
-    const [placement, behavior] = variant?.split('.');
+    const ThemeConfig = React.useContext(ThemeConfigContext);
 
+    const [placement, behavior] = variant?.split('.');
     const gridPlacementStyle = {
       mx: placement === 'inside' ? 0 : 'auto',
     };
     const gridBehaviorStyle =
       behavior === 'autoColumns'
         ? {
-            gridAutoColumns,
-            columnGap,
+            gridAutoColumns: ThemeConfig.getColumnWidths(),
+            columnGap: ThemeConfig.getColumnGaps(),
           }
         : {
-            gridTemplateColumns,
-            columnGap,
-            width,
+            gridTemplateColumns: ThemeConfig.getGridTemplateColumns(),
+            columnGap: ThemeConfig.getColumnGaps(),
+            width: ThemeConfig.getContainerWidths(),
           };
     return (
       <Box
