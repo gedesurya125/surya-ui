@@ -84,14 +84,14 @@ Default.args = {
 
 // Elements
 const SampleBox = ({ minusMargin, sx }) => {
-  // const ThemeConfig = React.useContext(ThemeConfigContext);
+  const ThemeConfig = React.useContext(ThemeConfigContext);
   return (
     <Box
       sx={{
-        // mx:
-        //   minusMargin === 'none'
-        //     ? 0
-        //     : ThemeConfig.getGridTemplateMarginNormalizers()[minusMargin],
+        mx:
+          minusMargin === 'none'
+            ? 0
+            : ThemeConfig.getGridTemplateMarginNormalizers()[minusMargin],
         ...sx,
       }}
     />
