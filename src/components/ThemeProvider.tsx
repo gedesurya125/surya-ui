@@ -5,17 +5,23 @@ import {
   ThemeConfigProvider,
   ThemeConfigContext,
 } from './context/themeConfigContext';
-
 import type { ThemeProviderProps as CoreThemeProviderProps } from '@theme-ui/core';
-// import type { MDXProviderComponents } from '@theme-ui/mdx';
-
 import {
-  // useResponsiveRem,
   theme as defaultTheme,
 } from './theme';
 
 // By default ThemeProvider component use default theme and config configuration,
 // But you can create other custom theme and extends the theme object to it to get the correct breakpoints configuration
+
+/**
+ * The ThemeProvider accept two properties :
+ * 1. theme
+ *    You can create theme based on ThemeUi Theme, and pass it to theme props
+ * 2. config
+ *    You can create an new config object by using ThemeConfigs Class, that exported as ThemeConfigs
+ *    you can fing the file at "./theme/config/themeConfig.ts"
+ * 
+ */
 
 export interface ThemeProviderProps {
   theme?: Theme;
@@ -27,7 +33,6 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   theme = defaultTheme,
   config = initialConfig,
 }) => {
-  console.log('this is initial config', initialConfig);
   return (
     <ThemeConfigProvider value={config}>
       <UiProvider theme={theme}>{children}</UiProvider>
