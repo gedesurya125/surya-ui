@@ -5,9 +5,9 @@ import {
 } from '../helper/getResponsiveValue';
 
 export interface ThemeConfig {
-  columnGap: number[];
-  columnAmmount?: number[];
-  containerWidth?: number[];
+  columnGaps: number[];
+  columnAmmounts?: number[];
+  containerWidths?: number[];
   growRatio?: number;
   normalizedRemValue?: number;
   breakpoints?: string[];
@@ -17,18 +17,18 @@ export interface ThemeConfig {
  * Theme Config Class that you can use to create new custom config based on your project
  */
 export class ThemeConfigs {
-  columnGap: number[];
-  columnAmmount: number[];
-  containerWidth: number[];
+  columnGaps: number[];
+  columnAmmounts: number[];
+  containerWidths: number[];
   growRatio: number;
   normalizedRemValue: number;
   breakpoints: string[];
 
   constructor({
     // default values
-    columnGap = [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-    columnAmmount = [12, 12, 24, 24, 24, 24],
-    containerWidth = [35, 58, 75, 75, 108, 130],
+    columnGaps = [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
+    columnAmmounts = [12, 12, 24, 24, 24, 24],
+    containerWidths = [35, 58, 75, 75, 108, 130],
     growRatio = 8.5,
     normalizedRemValue = 10,
     breakpoints = [
@@ -40,9 +40,9 @@ export class ThemeConfigs {
       '1440px',
     ],
   }) {
-    this.columnGap = columnGap;
-    this.columnAmmount = columnAmmount;
-    this.containerWidth = containerWidth;
+    this.columnGaps = columnGaps;
+    this.columnAmmounts = columnAmmounts;
+    this.containerWidths = containerWidths;
     this.growRatio = growRatio;
     this.normalizedRemValue = normalizedRemValue;
     this.breakpoints = breakpoints;
@@ -60,24 +60,26 @@ export class ThemeConfigs {
   }
 
   getColumnWidths() {
-    return this.containerWidth.map(
+    return this.containerWidths.map(
       (conWidth, index) =>
-        (conWidth - (this.columnAmmount[index] - 1) * this.columnGap[index]) /
-          this.columnAmmount[index] +
+        (conWidth - (this.columnAmmounts[index] - 1) * this.columnGaps[index]) /
+          this.columnAmmounts[index] +
         'rem'
     );
   }
   getGridTemplateColumns() {
-    return this.columnAmmount.map((colAmmount) => `repeat(${colAmmount}, 1fr)`);
+    return this.columnAmmounts.map(
+      (colAmmount) => `repeat(${colAmmount}, 1fr)`
+    );
   }
   getContainerWidths() {
-    return this.containerWidth.map((conWidth) => conWidth + 'rem');
+    return this.containerWidths.map((conWidth) => conWidth + 'rem');
   }
   getColumnGaps() {
-    return this.columnGap.map((gap) => gap + 'rem');
+    return this.columnGaps.map((gap) => gap + 'rem');
   }
   getGridTemplateMarginNormalizers() {
-    return this.containerWidth.map((conWidth) =>
+    return this.containerWidths.map((conWidth) =>
       getGridTemplateMarginNormalizer(conWidth)
     );
   }
@@ -86,9 +88,9 @@ export class ThemeConfigs {
 // =========== Theme Config object =================
 
 export const initialConfig = new ThemeConfigs({
-  columnGap: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmount: [12, 12, 24, 24, 24, 24],
-  containerWidth: [35, 58, 75, 75, 108, 130],
+  columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
+  columnAmmounts: [12, 12, 24, 24, 24, 24],
+  containerWidths: [35, 58, 75, 75, 108, 130],
   growRatio: 8.5,
   normalizedRemValue: 10,
   breakpoints: [

@@ -15,7 +15,7 @@ export interface ThemeConfigProvider {
 // Theme Config Hook
 export const useThemeConfig = () => {
   return React.useContext(ThemeConfigContext);
-}
+};
 
 // Theme Config Provider
 export const ThemeConfigProvider: React.FC<ThemeConfigProvider> = ({

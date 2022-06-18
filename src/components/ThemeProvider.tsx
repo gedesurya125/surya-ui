@@ -6,9 +6,7 @@ import {
   ThemeConfigContext,
 } from './context/themeConfigContext';
 import type { ThemeProviderProps as CoreThemeProviderProps } from '@theme-ui/core';
-import {
-  theme as defaultTheme,
-} from './theme';
+import { theme as defaultTheme } from './theme';
 
 // By default ThemeProvider component use default theme and config configuration,
 // But you can create other custom theme and extends the theme object to it to get the correct breakpoints configuration
@@ -20,7 +18,7 @@ import {
  * 2. config
  *    You can create an new config object by using ThemeConfigs Class, that exported as ThemeConfigs
  *    you can fing the file at "./theme/config/themeConfig.ts"
- * 
+ *
  */
 
 export interface ThemeProviderProps {
@@ -39,7 +37,6 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     </ThemeConfigProvider>
   );
 };
-
 // Elements
 export interface ProviderProps extends Pick<CoreThemeProviderProps, 'theme'> {}
 
