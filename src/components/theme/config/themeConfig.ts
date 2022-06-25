@@ -36,8 +36,8 @@ export class ThemeConfigs {
       '640px',
       '@media (min-width:800px) and (orientation: portrait)',
       '@media (min-width:800px) and (orientation: landscape)',
-      '1194px',
-      '1440px',
+      '1000px',
+      '1400px',
     ],
   }) {
     this.columnGaps = columnGaps;
@@ -98,7 +98,7 @@ export const initialConfig = new ThemeConfigs({
     '640px',
     '@media (min-width:800px) and (orientation: portrait)',
     '@media (min-width:800px) and (orientation: landscape)',
-    '1194px',
-    '1440px',
+    '1000px',
+    '1400px',
   ],
 });
