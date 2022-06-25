@@ -4,8 +4,8 @@ import {
   getGridTemplateMarginNormalizer,
 } from '../helper/getResponsiveValue';
 
-export interface ThemeConfig {
-  columnGaps: number[];
+export interface ThemeConfigsInput {
+  columnGaps?: number[];
   columnAmmounts?: number[];
   containerWidths?: number[];
   growRatio?: number;
@@ -13,9 +13,27 @@ export interface ThemeConfig {
   breakpoints?: string[];
 }
 
-/**
+//========================== Default Config Value =======================================
+const defaultThemeConfigsValue = {
+  columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
+  columnAmmounts: [12, 12, 24, 24, 24, 24],
+  containerWidths: [35, 58, 74, 74, 90, 125],
+  growRatio: 8.5,
+  normalizedRemValue: 10,
+  breakpoints: [
+    '375px',
+    '640px',
+    '@media (min-width:800px) and (orientation: portrait)',
+    '@media (min-width:800px) and (orientation: landscape)',
+    '1000px',
+    '1400px',
+  ],
+};
+// =====================================================================================
+
+/***************************************************************************************
  * Theme Config Class that you can use to create new custom config based on your project
- */
+ ***************************************************************************************/
 export class ThemeConfigs {
   columnGaps: number[];
   columnAmmounts: number[];
@@ -26,20 +44,13 @@ export class ThemeConfigs {
 
   constructor({
     // default values
-    columnGaps = [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-    columnAmmounts = [12, 12, 24, 24, 24, 24],
-    containerWidths = [35, 58, 75, 75, 108, 130],
-    growRatio = 8.5,
-    normalizedRemValue = 10,
-    breakpoints = [
-      '375px',
-      '640px',
-      '@media (min-width:800px) and (orientation: portrait)',
-      '@media (min-width:800px) and (orientation: landscape)',
-      '1000px',
-      '1400px',
-    ],
-  }) {
+    columnGaps = defaultThemeConfigsValue.columnGaps,
+    columnAmmounts = defaultThemeConfigsValue.columnAmmounts,
+    containerWidths = defaultThemeConfigsValue.containerWidths,
+    growRatio = defaultThemeConfigsValue.growRatio,
+    normalizedRemValue = defaultThemeConfigsValue.normalizedRemValue,
+    breakpoints = defaultThemeConfigsValue.breakpoints,
+  }: ThemeConfigsInput) {
     this.columnGaps = columnGaps;
     this.columnAmmounts = columnAmmounts;
     this.containerWidths = containerWidths;
@@ -85,20 +96,6 @@ export class ThemeConfigs {
   }
 }
 
-// =========== Theme Config object =================
+// ======================== Theme Config object =======================
 
-export const initialConfig = new ThemeConfigs({
-  columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmounts: [12, 12, 24, 24, 24, 24],
-  containerWidths: [35, 58, 75, 75, 108, 130],
-  growRatio: 8.5,
-  normalizedRemValue: 10,
-  breakpoints: [
-    '375px',
-    '640px',
-    '@media (min-width:800px) and (orientation: portrait)',
-    '@media (min-width:800px) and (orientation: landscape)',
-    '1000px',
-    '1400px',
-  ],
-});
+export const initialConfig = new ThemeConfigs(defaultThemeConfigsValue);
