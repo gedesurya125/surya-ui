@@ -34,8 +34,8 @@ export class ThemeConfigs {
     breakpoints = [
       '375px',
       '640px',
-      '@media (min-width:834px) and (orientation: portrait)',
-      '@media (min-width:812px) and (orientation: landscape)',
+      '@media (min-width:800px) and (orientation: portrait)',
+      '@media (min-width:800px) and (orientation: landscape)',
       '1194px',
       '1440px',
     ],
@@ -96,8 +96,8 @@ export const initialConfig = new ThemeConfigs({
   breakpoints: [
     '375px',
     '640px',
-    '@media (min-width:834px) and (orientation: portrait)',
-    '@media (min-width:812px) and (orientation: landscape)',
+    '@media (min-width:800px) and (orientation: portrait)',
+    '@media (min-width:800px) and (orientation: landscape)',
     '1194px',
     '1440px',
   ],
