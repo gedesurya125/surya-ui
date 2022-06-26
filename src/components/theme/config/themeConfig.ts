@@ -1,7 +1,7 @@
 import {
   getResponsiveSize,
   getScreenSizeFromBreakpoint,
-  getGridTemplateMarginNormalizer,
+  getGridTemplateMargin,
 } from '../helper/getResponsiveValue';
 
 export interface ThemeConfigsInput {
@@ -89,9 +89,15 @@ export class ThemeConfigs {
   getColumnGaps() {
     return this.columnGaps.map((gap) => gap + 'rem');
   }
+
+  getGridTemplateMargins() {
+    return this.containerWidths.map((conWidth) =>
+      getGridTemplateMargin(conWidth, false)
+    );
+  }
   getGridTemplateMarginNormalizers() {
     return this.containerWidths.map((conWidth) =>
-      getGridTemplateMarginNormalizer(conWidth)
+      getGridTemplateMargin(conWidth, true)
     );
   }
 }

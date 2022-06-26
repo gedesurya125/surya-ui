@@ -38,5 +38,7 @@ export const getResponsiveSize = (
 ) =>
   `calc(${growRatio} / ${breakpointsScreenSize} * (100vw - ${breakpointsScreenSize}px) + ${normalizedRemValue}px)`;
 
-export const getGridTemplateMarginNormalizer = (contaienrWidth: number) =>
-  `calc((100vw - ${contaienrWidth}rem) * -0.5)`;
+export const getGridTemplateMargin = (
+  contaienrWidth: number,
+  isNormalizer: boolean
+) => `calc((100vw - ${contaienrWidth}rem) * ${isNormalizer ? -0.5 : 0.5})`;
