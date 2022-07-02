@@ -30,6 +30,7 @@ export const useActiveBreakpoints = (themeConfigs = initialConfig) => {
         const mediaQuery = window?.matchMedia(query);
         return mediaQuery.matches;
       });
+
     const Observer = new ResizeObserver(() => {
       setMathcesBreakpoints(matchBreakpoints());
     });
