@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "module": "esnext",
-    "lib": ["DOM", "esnext"],
+    "lib": ["dom", "esnext"],
     "types": ["resize-observer-browser"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
