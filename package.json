@@ -1,6 +1,10 @@
 {
   "version": "2.3.11",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gedesurya125/surya-ui"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
