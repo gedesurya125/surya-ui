@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialConfig } from 'components/theme';
+import { initialConfig } from '../theme';
 
 export const useActiveBreakpoints = (themeConfigs = initialConfig) => {
   const [matchesBreakPoints, setMathcesBreakpoints] = React.useState<boolean[]>(
