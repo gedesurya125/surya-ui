@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 
 // Depedency components
 import { ThemeProvider } from '../src/components/ThemeProvider';
-import { ThemeConfigContext } from '../src/components/context/themeConfigContext';
+import { useThemeConfig } from '../src/components/context/themeConfigContext';
 import { theme } from '../src/components/theme/theme';
 import { Box } from 'theme-ui';
 
@@ -84,7 +84,7 @@ Default.args = {
 
 // Elements
 const SampleBox = ({ minusMargin, sx }) => {
-  const ThemeConfig = React.useContext(ThemeConfigContext);
+  const ThemeConfig = useThemeConfig();
   return (
     <Box
       sx={{
@@ -104,8 +104,6 @@ const SampleBox = ({ minusMargin, sx }) => {
 
 const Template2: Story<TestingProps> = (args) => {
   const { variant, bg, height, gridColumnStart, gridColumnEnd } = args;
-
-  console.log('current variant is', variant);
   return (
     <ThemeProvider theme={theme}>
       <GridTemplate>
