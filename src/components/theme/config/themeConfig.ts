@@ -80,35 +80,4 @@ export class ThemeConfigs {
   }
 }
 
-// =========== Theme Config object =================
-export const themeConfig: ThemeConfig = {
-  columnGap: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmount: [12, 12, 24, 24, 24, 24],
-  containerWidth: [35, 58, 75, 75, 108, 130],
-  growRatio: 8.5,
-  normalizedRemValue: 10,
-  breakpoints: [
-    '375px',
-    '640px',
-    '@media (min-width:834px) and (orientation: portrait)',
-    '@media (min-width:812px) and (orientation: landscape)',
-    '1194px',
-    '1440px',
-  ],
-};
-
-export const initialConfig = new ThemeConfigs({
-  columnGap: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmount: [12, 12, 24, 24, 24, 24],
-  containerWidth: [35, 58, 75, 75, 108, 130],
-  growRatio: 8.5,
-  normalizedRemValue: 10,
-  breakpoints: [
-    '375px',
-    '640px',
-    '@media (min-width:834px) and (orientation: portrait)',
-    '@media (min-width:812px) and (orientation: landscape)',
-    '1194px',
-    '1440px',
-  ],
-});
+export const initialConfig = new ThemeConfigs({});
