@@ -71,7 +71,7 @@ function App() {
 
 5. growRatio
 
-growRatio is growing ration of the responsive rem value, by default it's set to 8.5
+   growRatio is growing ration of the responsive rem value, by default it's set to 8.5
 
 6. normalizedRemValue
 
@@ -101,7 +101,7 @@ export const themeConfigs = new ThemeConfigs({
 });
 ```
 
-2. Inport the themeConfigs instances to ThemeProvider
+2. Import the themeConfigs instances to ThemeProvider
 
 ```js
 import YourComponent from './YourComponent'
