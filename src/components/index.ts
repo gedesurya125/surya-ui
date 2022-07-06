@@ -5,4 +5,3 @@ export * from './GridTemplate';
 export * from './Overlay';
 export * from './context';
 export * from './hooks';
-export * from './constants/constant';

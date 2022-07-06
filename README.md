@@ -9,4 +9,113 @@ It's based on [theme-ui](https://theme-ui.com/) and [framer-motion](https://www.
 5. The GridTemplate has 12 breakpoints for small screen and 24 breakpoints for large screen, but you can still allowed to customize it, including the gap and each grid width, by creating themeConfig instances from ThemeConfigs Classes
 6. The Width of GridTemplate container can be customize as well
 
-another feature still on developed, as i don't have much time to do that
+## Basic Use
+
+Wrapp your component in the ThemeProvider and you ready to use responsive rem value which 1 rem equal to 10px for each breakpoints.
+
+```js
+import YourComponent from './YourComponent'
+import { ThemeProvider } from '@gedesurya125/surya-ui';
+
+// theme is same with theme object of theme-ui value
+import theme from '.theme'
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <YourComponent>
+    </ThemeProvider>
+  );
+}
+```
+
+### Default Values
+
+1. breakpoints
+
+```js
+[
+  '375px',
+  '640px',
+  '@media (min-width:800px) and (orientation: portrait)',
+  '@media (min-width:800px) and (orientation: landscape)',
+  '1000px',
+  '1400px',
+];
+```
+
+2. columnGaps
+
+   columnGaps is the space between columns for each breakpoints.
+   each columnGaps value is considered in responsice rem units.
+
+```js
+[0.3, 0.4, 0.4, 0.4, 0.5, 0.6];
+```
+
+3. columnAmmounts
+
+   columnAmmounts represent the number of columns for each breakpoints
+
+```js
+[12, 12, 24, 24, 24, 24];
+```
+
+4. containerWidths
+
+   containerWidths is the width of the Container Based Components, eg: GridTemplate
+
+```js
+[35, 58, 74, 74, 90, 125];
+```
+
+5. growRatio
+
+growRatio is growing ration of the responsive rem value, by default it's set to 8.5
+
+6. normalizedRemValue
+
+   normailizedRemValue is the start value for 1 rem at breakpoints value, it's set to 10 by default
+
+## CUSTOMIZE The Config
+
+1. Creata a themeConfig instances by using ThemeConfig Class
+
+```js
+// themeConfigs.js
+import { ThemeConfigs } from '@gedesurya125/surya-ui';
+export const themeConfigs = new ThemeConfigs({
+  columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
+  columnAmmounts: [12, 12, 24, 24, 24, 24],
+  containerWidths: [35, 58, 74, 74, 90, 125],
+  growRatio: 8.5,
+  normalizedRemValue: 10,
+  breakpoints: [
+    '375px',
+    '640px',
+    '@media (min-width:800px) and (orientation: portrait)',
+    '@media (min-width:800px) and (orientation: landscape)',
+    '1000px',
+    '1400px',
+  ],
+});
+```
+
+2. Inport the themeConfigs instances to ThemeProvider
+
+```js
+import YourComponent from './YourComponent'
+import { ThemeProvider } from '@gedesurya125/surya-ui';
+import { themeConfigs } from './themeConfigs'
+
+// theme is same with theme object of theme-ui value
+import theme from '.theme'
+
+function App() {
+  return (
+    <ThemeProvider theme={theme} config={themeConfigs}>
+      <YourComponent>
+    </ThemeProvider>
+  );
+}
+```
