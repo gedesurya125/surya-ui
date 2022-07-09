@@ -29,6 +29,29 @@ function App() {
 }
 ```
 
+### Theme Object Example
+
+theme object based on theme-ui. and the breakpoints and root fontSize is already setup behind the scenes
+
+```js
+// theme.ts
+import { Theme } from 'theme-ui';
+export const theme: Theme = {
+  // breakpoints : ThemeConfig.breakpoints.slice(1), // already setup behind the scenes
+  // styles: {
+  //   root: {
+  //     fontSize: ThemeConfig.getResponsiveFontSizes(), // already setup behind the scenes
+  //   },
+  // },
+  fonts: {
+    body: 'sans-serif',
+    heading: 'sans-serif',
+    monospace: 'sann-serif',
+  },
+  // other theme-ui styles goes here
+};
+```
+
 ### Default Values
 
 1. breakpoints
