@@ -142,3 +142,45 @@ function App() {
   );
 }
 ```
+
+## Hooks
+
+1. useThemeConfig
+   this return current theme config instaces, and you can access allcurrent applied config value using that instance:
+
+   ```js
+   import { useThemeConfig } from '@gedesurya125/surya-ui';
+
+   const ReactComponent = () => {
+     const config = usThemeConfig();
+
+     /**
+      * Available access
+      * config.columnGaps
+      * config.columnAmmounts
+      * config.containerWidths
+      * config.growRatio
+      * config.normalizedRemValue
+      * config.breakpoints
+      *
+      * Methods
+      * config.getResponsiveFontSizes()
+      * config.getColumnWidths()
+      * config.getGridTemplateColumns()
+      * config.getContainerWidth()
+      * config.getColumnGaps()
+      * config.getGridTemplateMargins()
+      * config.getGridTemplateMarginsNormalizers()
+      */
+   };
+   ```
+
+2. useActiveBreakpoints
+   This hooks return an array of boolean active breakpoints
+
+   ```js
+   // inside react component
+   const activeBreakpoints = useActiveBreakpoints();
+   // activeBreakpoints = [true, true, true, false, false, false]
+   // it indicates the current active breakpoints is at (min-width: 800px) and (orientation: 'portrait') as the last true value at index of 3
+   ```
