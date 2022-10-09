@@ -1,13 +1,16 @@
 import React from 'react';
-import { initialConfig } from '../theme';
+import { useThemeConfig } from '../context';
 
-export const useActiveBreakpoints = (themeConfigs = initialConfig) => {
+// imporovement to make user no need to pass the themeconfig to this hooks
+
+export const useActiveBreakpoints = () => {
+  const configs = useThemeConfig();
   const [matchesBreakPoints, setMathcesBreakpoints] = React.useState<boolean[]>(
     []
   );
   React.useEffect(() => {
     // Get the setted up breakpoints on the project
-    const breakpoints = themeConfigs?.breakpoints;
+    const breakpoints = configs?.breakpoints;
 
     // remove '@media' string from the setted up breakpoints
     const removedMedia = breakpoints.map((breakpoint) =>
