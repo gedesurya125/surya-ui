@@ -1,6 +1,6 @@
 import {
   getResponsiveSize,
-  getScreenSizeFromBreakpoint,
+  // getScreenSizeFromBreakpoint,
   getGridTemplateMargin,
 } from '../helper/getResponsiveValue';
 
@@ -11,6 +11,7 @@ export interface ThemeConfigsInput {
   growRatio?: number;
   normalizedRemValue?: number;
   breakpoints?: string[];
+  targetScreenSizes?: number[];
 }
 
 //========================== Default Config Value =======================================
@@ -21,13 +22,14 @@ const defaultThemeConfigsValue = {
   growRatio: 8.5,
   normalizedRemValue: 10,
   breakpoints: [
-    '375px',
-    '640px',
-    '@media (min-width:800px) and (orientation: portrait)',
-    '@media (min-width:800px) and (orientation: landscape)',
+    '320px',
+    '500px',
+    '@media (min-width:720px) and (orientation: portrait)',
+    '@media (min-width:700px) and (orientation: landscape)',
     '1000px',
-    '1400px',
+    '1200px',
   ],
+  targetScreenSizes: [375, 640, 834, 812, 1194, 1440],
 };
 // =====================================================================================
 
@@ -41,6 +43,7 @@ export class ThemeConfigs {
   growRatio: number;
   normalizedRemValue: number;
   breakpoints: string[];
+  targetScreenSizes: number[];
 
   constructor({
     // default values
@@ -50,6 +53,7 @@ export class ThemeConfigs {
     growRatio = defaultThemeConfigsValue.growRatio,
     normalizedRemValue = defaultThemeConfigsValue.normalizedRemValue,
     breakpoints = defaultThemeConfigsValue.breakpoints,
+    targetScreenSizes = defaultThemeConfigsValue.targetScreenSizes,
   }: ThemeConfigsInput) {
     this.columnGaps = columnGaps;
     this.columnAmmounts = columnAmmounts;
@@ -57,15 +61,17 @@ export class ThemeConfigs {
     this.growRatio = growRatio;
     this.normalizedRemValue = normalizedRemValue;
     this.breakpoints = breakpoints;
+    this.targetScreenSizes = targetScreenSizes;
   }
 
   // Method
   getResponsiveFontSizes() {
-    return this.breakpoints.map((breakpoint) => {
+    return this.targetScreenSizes.map((screeenSize) => {
       return getResponsiveSize(
-        getScreenSizeFromBreakpoint(breakpoint),
+        // getScreenSizeFromBreakpoint(breakpoint),
         this.growRatio,
-        this.normalizedRemValue
+        this.normalizedRemValue,
+        screeenSize
       );
     });
   }

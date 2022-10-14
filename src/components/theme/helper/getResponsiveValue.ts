@@ -32,11 +32,12 @@ export const getScreenSizeFromBreakpoint = (
  * the return value will be `calc(8.5 / 360 * (100vw - 360px) + 10px)
  */
 export const getResponsiveSize = (
-  breakpointsScreenSize: number,
+  // breakpointsScreenSize: number,
   growRatio: ThemeConfigs['growRatio'],
-  normalizedRemValue: ThemeConfigs['normalizedRemValue']
+  normalizedRemValue: ThemeConfigs['normalizedRemValue'],
+  targetScreenSizes: number
 ) =>
-  `calc(${growRatio} / ${breakpointsScreenSize} * (100vw - ${breakpointsScreenSize}px) + ${normalizedRemValue}px)`;
+  `calc(${growRatio} / ${targetScreenSizes} * (100vw - ${targetScreenSizes}px) + ${normalizedRemValue}px)`;
 
 export const getGridTemplateMargin = (
   contaienrWidth: number,
