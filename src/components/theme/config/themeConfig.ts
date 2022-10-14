@@ -18,7 +18,7 @@ export interface ThemeConfigsInput {
 const defaultThemeConfigsValue = {
   columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
   columnAmmounts: [12, 12, 24, 24, 24, 24],
-  containerWidths: [35, 58, 74, 74, 90, 125],
+  containerWidths: [35, 58, 74, 74, 110, 125],
   growRatio: 8.5,
   normalizedRemValue: 10,
   breakpoints: [

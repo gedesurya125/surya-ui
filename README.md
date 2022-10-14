@@ -58,16 +58,22 @@ export const theme: Theme = {
 
 ```js
 [
-  '375px',
-  '640px',
-  '@media (min-width:800px) and (orientation: portrait)',
-  '@media (min-width:800px) and (orientation: landscape)',
+  '320px',
+  '500px',
+  '@media (min-width:720px) and (orientation: portrait)',
+  '@media (min-width:700px) and (orientation: landscape)',
   '1000px',
-  '1400px',
+  '1200px',
 ];
 ```
 
-2. columnGaps
+2. targetScreenSizes
+
+```js
+[375, 640, 834, 812, 1194, 1440];
+```
+
+3. columnGaps
 
    columnGaps is the space between columns for each breakpoints.
    each columnGaps value is considered in responsice rem units.
@@ -76,7 +82,7 @@ export const theme: Theme = {
 [0.3, 0.4, 0.4, 0.4, 0.5, 0.6];
 ```
 
-3. columnAmmounts
+4. columnAmmounts
 
    columnAmmounts represent the number of columns for each breakpoints
 
@@ -84,19 +90,19 @@ export const theme: Theme = {
 [12, 12, 24, 24, 24, 24];
 ```
 
-4. containerWidths
+5. containerWidths
 
    containerWidths is the width of the Container Based Components, eg: GridTemplate
 
 ```js
-[35, 58, 74, 74, 90, 125];
+[35, 58, 74, 74, 100, 125];
 ```
 
-5. growRatio
+6. growRatio
 
    growRatio is growing ration of the responsive rem value, by default it's set to 8.5
 
-6. normalizedRemValue
+7. normalizedRemValue
 
    normailizedRemValue is the start value for 1 rem at breakpoints value, it's set to 10 by default
 
@@ -110,17 +116,18 @@ import { ThemeConfigs } from '@gedesurya125/surya-ui';
 export const themeConfigs = new ThemeConfigs({
   columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
   columnAmmounts: [12, 12, 24, 24, 24, 24],
-  containerWidths: [35, 58, 74, 74, 90, 125],
+  containerWidths: [35, 58, 74, 74, 100, 125],
   growRatio: 8.5,
   normalizedRemValue: 10,
   breakpoints: [
-    '375px',
-    '640px',
-    '@media (min-width:800px) and (orientation: portrait)',
-    '@media (min-width:800px) and (orientation: landscape)',
+    '320px',
+    '500px',
+    '@media (min-width:720px) and (orientation: portrait)',
+    '@media (min-width:700px) and (orientation: landscape)',
     '1000px',
-    '1400px',
+    '1200px',
   ],
+  targetScreenSizes: [375, 640, 834, 812, 1194, 1440],
 });
 ```
 
