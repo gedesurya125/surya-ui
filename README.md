@@ -82,9 +82,9 @@ export const theme: Theme = {
 [0.3, 0.4, 0.4, 0.4, 0.5, 0.6];
 ```
 
-4. columnAmmounts
+4. columnAmounts
 
-   columnAmmounts represent the number of columns for each breakpoints
+   columnAmounts represent the number of columns for each breakpoints
 
 ```js
 [12, 12, 24, 24, 24, 24];
@@ -115,7 +115,7 @@ export const theme: Theme = {
 import { ThemeConfigs } from '@gedesurya125/surya-ui';
 export const themeConfigs = new ThemeConfigs({
   columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmounts: [12, 12, 24, 24, 24, 24],
+  columnAmounts: [12, 12, 24, 24, 24, 24],
   containerWidths: [35, 58, 74, 74, 100, 125],
   growRatio: 8.5,
   normalizedRemValue: 10,
@@ -164,7 +164,7 @@ function App() {
      /**
       * Available access
       * config.columnGaps
-      * config.columnAmmounts
+      * config.columnAmounts
       * config.containerWidths
       * config.growRatio
       * config.normalizedRemValue

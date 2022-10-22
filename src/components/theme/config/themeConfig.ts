@@ -6,7 +6,7 @@ import {
 
 export interface ThemeConfigsInput {
   columnGaps?: number[];
-  columnAmmounts?: number[];
+  columnAmounts?: number[];
   containerWidths?: number[];
   growRatio?: number;
   normalizedRemValue?: number;
@@ -17,7 +17,7 @@ export interface ThemeConfigsInput {
 //========================== Default Config Value =======================================
 const defaultThemeConfigsValue = {
   columnGaps: [0.3, 0.4, 0.4, 0.4, 0.5, 0.6],
-  columnAmmounts: [12, 12, 24, 24, 24, 24],
+  columnAmounts: [12, 12, 24, 24, 24, 24],
   containerWidths: [35, 58, 74, 74, 110, 125],
   growRatio: 8.5,
   normalizedRemValue: 10,
@@ -38,7 +38,7 @@ const defaultThemeConfigsValue = {
  ***************************************************************************************/
 export class ThemeConfigs {
   columnGaps: number[];
-  columnAmmounts: number[];
+  columnAmounts: number[];
   containerWidths: number[];
   growRatio: number;
   normalizedRemValue: number;
@@ -48,7 +48,7 @@ export class ThemeConfigs {
   constructor({
     // default values
     columnGaps = defaultThemeConfigsValue.columnGaps,
-    columnAmmounts = defaultThemeConfigsValue.columnAmmounts,
+    columnAmounts = defaultThemeConfigsValue.columnAmounts,
     containerWidths = defaultThemeConfigsValue.containerWidths,
     growRatio = defaultThemeConfigsValue.growRatio,
     normalizedRemValue = defaultThemeConfigsValue.normalizedRemValue,
@@ -56,7 +56,7 @@ export class ThemeConfigs {
     targetScreenSizes = defaultThemeConfigsValue.targetScreenSizes,
   }: ThemeConfigsInput) {
     this.columnGaps = columnGaps;
-    this.columnAmmounts = columnAmmounts;
+    this.columnAmounts = columnAmounts;
     this.containerWidths = containerWidths;
     this.growRatio = growRatio;
     this.normalizedRemValue = normalizedRemValue;
@@ -79,15 +79,13 @@ export class ThemeConfigs {
   getColumnWidths() {
     return this.containerWidths.map(
       (conWidth, index) =>
-        (conWidth - (this.columnAmmounts[index] - 1) * this.columnGaps[index]) /
-          this.columnAmmounts[index] +
+        (conWidth - (this.columnAmounts[index] - 1) * this.columnGaps[index]) /
+          this.columnAmounts[index] +
         'rem'
     );
   }
   getGridTemplateColumns() {
-    return this.columnAmmounts.map(
-      (colAmmount) => `repeat(${colAmmount}, 1fr)`
-    );
+    return this.columnAmounts.map((colAmmount) => `repeat(${colAmmount}, 1fr)`);
   }
   getContainerWidths() {
     return this.containerWidths.map((conWidth) => conWidth + 'rem');
