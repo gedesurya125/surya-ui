@@ -38,7 +38,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   );
 };
 // Elements
-export interface ProviderProps extends Pick<CoreThemeProviderProps, 'theme'> {}
+export interface ProviderProps extends Pick<CoreThemeProviderProps, 'theme'> {
+  theme: Theme;
+}
 
 const UiProvider: FC<ProviderProps> = ({ children, theme, ...props }) => {
   const ThemeConfig = React.useContext(ThemeConfigContext);
@@ -53,13 +55,16 @@ const UiProvider: FC<ProviderProps> = ({ children, theme, ...props }) => {
    */
 
   const baseTheme: Theme = {
-    breakpoints: ThemeConfig.breakpoints.slice(1),
+    // it makes the user cannot modify the styles root and the breakpoints,
+    ...theme,
     styles: {
+      ...theme.styles,
       root: {
+        ...theme?.styles?.root,
         fontSize: ThemeConfig.getResponsiveFontSizes(),
       },
     },
-    ...theme,
+    breakpoints: ThemeConfig.breakpoints.slice(1),
   };
   return (
     <ThemeUiProvider theme={baseTheme} {...props}>
